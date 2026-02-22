@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI UUID Generator - Generate, Validate & Format UUIDs Online</title>
+<meta name="description" content="Free online UUID v4 generator. Batch generate up to 100 UUIDs, validate UUID format, customize output.">
+<meta name="keywords" content="UUID generator, UUID v4, GUID generator, batch UUID, UUID validator">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="AI UUID Generator">
+<meta property="og:description" content="Free online UUID v4 generator with batch generation, validation, and formatting.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lifa-su.github.io/ai-uuid-generator/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI UUID Generator">
+<link rel="canonical" href="https://lifa-su.github.io/ai-uuid-generator/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f1117;--sf:#1a1d27;--sf2:#242836;--bd:#2e3348;--tx:#e4e6f0;--tx2:#8b8fa8;--ac:#6c5ce7;--ac2:#a29bfe;--gn:#00cec9;--rd:#ff6b6b}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.6}
+.wrap{max-width:800px;margin:0 auto;padding:20px}
+header{text-align:center;padding:40px 0 30px}
+h1{font-size:2rem;background:linear-gradient(135deg,var(--ac),var(--ac2),var(--gn));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+header p{color:var(--tx2);font-size:.95rem}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 4px 24px rgba(0,0,0,.3)}
+.card h2{font-size:1.1rem;margin-bottom:16px;color:var(--ac2)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.bp{background:var(--ac);color:#fff}.bp:hover{background:#5b4bd5;transform:translateY(-1px)}
+.bs{background:var(--sf2);color:var(--tx);border:1px solid var(--bd)}.bs:hover{border-color:var(--ac)}
+.bc{background:transparent;color:var(--gn);border:1px solid var(--gn);padding:4px 10px;font-size:.75rem;border-radius:6px;cursor:pointer;transition:all .2s}
+.bc:hover,.bc.ok{background:var(--gn);color:var(--bg)}
+.grow{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.cnt{display:flex;align-items:center;gap:10px;flex:1;min-width:200px}
+.cnt input[type=range]{flex:1;accent-color:var(--ac)}
+.cval{background:var(--sf2);border:1px solid var(--bd);border-radius:6px;padding:4px 10px;min-width:48px;text-align:center;font-weight:600;color:var(--ac2);font-size:.9rem}
+.fmts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.tgl{padding:8px 16px;border-radius:8px;border:1px solid var(--bd);background:var(--sf2);color:var(--tx2);cursor:pointer;font-size:.82rem;font-weight:500;transition:all .2s}
+.tgl.on{border-color:var(--ac);color:var(--ac2);background:rgba(108,92,231,.15)}
+.out{margin-top:16px;min-height:20px}
+.ulist{display:flex;flex-direction:column;gap:6px}
+.ui{display:flex;align-items:center;justify-content:space-between;background:var(--sf2);border-radius:8px;padding:10px 14px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:.88rem;word-break:break-all;gap:10px}
+.ui span{flex:1;user-select:all}
+.car{display:flex;justify-content:flex-end;margin-top:10px;gap:8px}
+.vrow{display:flex;gap:10px;flex-wrap:wrap}
+.vrow input{flex:1;min-width:200px;padding:10px 14px;border-radius:8px;border:1px solid var(--bd);background:var(--sf2);color:var(--tx);font-family:'SF Mono',Monaco,Consolas,monospace;font-size:.9rem;outline:none;transition:border-color .2s}
+.vrow input:focus{border-color:var(--ac)}
+.vres{margin-top:12px;padding:12px 16px;border-radius:8px;font-size:.88rem;display:none}
+.vres.ok{display:block;background:rgba(0,206,201,.1);border:1px solid rgba(0,206,201,.3);color:var(--gn)}
+.vres.no{display:block;background:rgba(255,107,107,.1);border:1px solid rgba(255,107,107,.3);color:var(--rd)}
+.hlist{max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:4px}
+.hlist::-webkit-scrollbar{width:6px}.hlist::-webkit-scrollbar-thumb{background:var(--bd);border-radius:3px}
+.hi{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--sf2);border-radius:6px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:.82rem;gap:8px}
+.hi .t{color:var(--tx2);font-size:.75rem;white-space:nowrap}
+.hi span{flex:1;user-select:all;word-break:break-all}
+.hact{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.empty{text-align:center;color:var(--tx2);padding:20px;font-size:.9rem}
+footer{text-align:center;padding:30px 0;color:var(--tx2);font-size:.8rem}
+@media(max-width:600px){.wrap{padding:12px}header{padding:24px 0 18px}h1{font-size:1.5rem}.card{padding:16px}.grow{flex-direction:column;align-items:stretch}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>🔑 AI UUID Generator</h1><p>Generate, validate, and format UUIDs instantly</p></header>
+
+<div class="card">
+<h2>⚡ Generate UUIDs</h2>
+<div class="grow">
+<button class="btn bp" onclick="gen()">Generate</button>
+<div class="cnt">
+<span style="color:var(--tx2);font-size:.85rem">Count:</span>
+<input type="range" id="count" min="1" max="100" value="1" oninput="document.getElementById('cv').textContent=this.value">
+<span class="cval" id="cv">1</span>
+</div>
+</div>
+<div class="fmts">
+<button class="tgl on" id="fLower" onclick="toggleFmt(this,'lower')">lowercase</button>
+<button class="tgl" id="fUpper" onclick="toggleFmt(this,'upper')">UPPERCASE</button>
+<button class="tgl" id="fNoDash" onclick="toggleFmt(this,'nodash')">No Dashes</button>
+</div>
+<div class="out" id="output"></div>
+</div>
+
+<div class="card">
+<h2>🔍 Validate UUID</h2>
+<div class="vrow">
+<input type="text" id="vinput" placeholder="Paste a UUID to validate..." oninput="validate()">
+</div>
+<div class="vres" id="vresult"></div>
+</div>
+
+<div class="card">
+<h2>📋 History</h2>
+<div class="hact">
+<span style="color:var(--tx2);font-size:.85rem" id="hcount">0 items</span>
+<button class="btn bs" style="padding:6px 12px;font-size:.8rem" onclick="clearHist()">Clear All</button>
+</div>
+<div class="hlist" id="hlist"><div class="empty">No UUIDs generated yet</div></div>
+</div>
+
+<footer>
+<p>AI UUID Generator &mdash; All UUIDs generated client-side using Web Crypto API</p>
+</footer>
+</div>
+<script>
+let fmt={lower:true,upper:false,nodash:false};
+let history=JSON.parse(localStorage.getItem('uuid-hist')||'[]');
+let currentUuids=[];
+
+function genUUID(){
+  if(crypto.randomUUID) return crypto.randomUUID();
+  let b=new Uint8Array(16);
+  crypto.getRandomValues(b);
+  b[6]=(b[6]&0x0f)|0x40;
+  b[8]=(b[8]&0x3f)|0x80;
+  let h=[...b].map(x=>x.toString(16).padStart(2,'0')).join('');
+  return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20);
+}
+
+function applyFmt(u){
+  let r=u;
+  if(fmt.upper) r=r.toUpperCase();
+  else r=r.toLowerCase();
+  if(fmt.nodash) r=r.replace(/-/g,'');
+  return r;
+}
+
+function toggleFmt(el,key){
+  if(key==='lower'||key==='upper'){
+    fmt.lower=key==='lower';
+    fmt.upper=key==='upper';
+    document.getElementById('fLower').classList.toggle('on',fmt.lower);
+    document.getElementById('fUpper').classList.toggle('on',fmt.upper);
+  } else {
+    fmt[key]=!fmt[key];
+    el.classList.toggle('on',fmt[key]);
+  }
+  if(currentUuids.length) renderUuids();
+}
+
+function gen(){
+  let n=parseInt(document.getElementById('count').value);
+  currentUuids=[];
+  for(let i=0;i<n;i++) currentUuids.push(genUUID());
+  let now=new Date().toLocaleTimeString();
+  currentUuids.forEach(u=>{
+    history.unshift({uuid:u,time:now});
+  });
+  if(history.length>500) history=history.slice(0,500);
+  localStorage.setItem('uuid-hist',JSON.stringify(history));
+  renderUuids();
+  renderHist();
+}
+
+function renderUuids(){
+  let o=document.getElementById('output');
+  if(!currentUuids.length){o.innerHTML='';return;}
+  let items=currentUuids.map(u=>{
+    let f=applyFmt(u);
+    return '<div class="ui"><span>'+f+'</span><button class="bc" onclick="copyOne(this,\''+f+'\')">Copy</button></div>';
+  }).join('');
+  let copyAll=currentUuids.length>1?'<div class="car"><button class="btn bs" style="padding:6px 12px;font-size:.8rem" onclick="copyAll()">Copy All</button></div>':'';
+  o.innerHTML='<div class="ulist">'+items+'</div>'+copyAll;
+}
+
+function copyOne(btn,text){
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.textContent='Copied!';btn.classList.add('ok');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('ok');},1500);
+  });
+}
+
+function copyAll(){
+  let all=currentUuids.map(u=>applyFmt(u)).join('\n');
+  navigator.clipboard.writeText(all);
+}
+
+function validate(){
+  let v=document.getElementById('vinput').value.trim();
+  let r=document.getElementById('vresult');
+  if(!v){r.className='vres';return;}
+  let rx=/^[0-9a-f]{8}-[0-9a-f]{4}-([1-5])[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  let rxNoDash=/^[0-9a-f]{8}([1-5])[0-9a-f]{3}[89ab][0-9a-f]{15}$/i;
+  let m=v.match(rx);
+  if(m){
+    r.className='vres ok';
+    r.innerHTML='✅ Valid UUID v'+m[1];
+  } else {
+    let m2=v.replace(/-/g,'');
+    if(m2.length===32 && /^[0-9a-f]{32}$/i.test(m2)){
+      let ver=m2[12];
+      if('12345'.includes(ver)){
+        r.className='vres ok';
+        r.innerHTML='✅ Valid UUID v'+ver+' (no dashes)';
+        return;
+      }
+    }
+    r.className='vres no';
+    r.innerHTML='❌ Invalid UUID format';
+  }
+}
+
+function renderHist(){
+  let h=document.getElementById('hlist');
+  let c=document.getElementById('hcount');
+  c.textContent=history.length+' items';
+  if(!history.length){h.innerHTML='<div class="empty">No UUIDs generated yet</div>';return;}
+  h.innerHTML=history.slice(0,200).map(x=>
+    '<div class="hi"><span class="t">'+x.time+'</span><span>'+x.uuid+'</span><button class="bc" onclick="copyOne(this,\''+x.uuid+'\')">Copy</button></div>'
+  ).join('');
+}
+
+function clearHist(){
+  history=[];localStorage.removeItem('uuid-hist');renderHist();
+}
+
+renderHist();
+</script>
+<script src="https://m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+</body>
+</html>
