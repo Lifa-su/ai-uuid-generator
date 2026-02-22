@@ -3,219 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI UUID Generator - Generate, Validate & Format UUIDs Online</title>
-<meta name="description" content="Free online UUID v4 generator. Batch generate up to 100 UUIDs, validate UUID format, customize output.">
-<meta name="keywords" content="UUID generator, UUID v4, GUID generator, batch UUID, UUID validator">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="AI UUID Generator">
-<meta property="og:description" content="Free online UUID v4 generator with batch generation, validation, and formatting.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://lifa-su.github.io/ai-uuid-generator/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AI UUID Generator">
-<link rel="canonical" href="https://lifa-su.github.io/ai-uuid-generator/">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<title>UUID Generator - Generate v4 UUIDs Instantly</title>
+<meta name="description" content="Free online UUID v4 generator. Generate random UUIDs in bulk with customizable formats.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0f1117;--sf:#1a1d27;--sf2:#242836;--bd:#2e3348;--tx:#e4e6f0;--tx2:#8b8fa8;--ac:#6c5ce7;--ac2:#a29bfe;--gn:#00cec9;--rd:#ff6b6b}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.6}
-.wrap{max-width:800px;margin:0 auto;padding:20px}
-header{text-align:center;padding:40px 0 30px}
-h1{font-size:2rem;background:linear-gradient(135deg,var(--ac),var(--ac2),var(--gn));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
-header p{color:var(--tx2);font-size:.95rem}
-.card{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 4px 24px rgba(0,0,0,.3)}
-.card h2{font-size:1.1rem;margin-bottom:16px;color:var(--ac2)}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s}
-.bp{background:var(--ac);color:#fff}.bp:hover{background:#5b4bd5;transform:translateY(-1px)}
-.bs{background:var(--sf2);color:var(--tx);border:1px solid var(--bd)}.bs:hover{border-color:var(--ac)}
-.bc{background:transparent;color:var(--gn);border:1px solid var(--gn);padding:4px 10px;font-size:.75rem;border-radius:6px;cursor:pointer;transition:all .2s}
-.bc:hover,.bc.ok{background:var(--gn);color:var(--bg)}
-.grow{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.cnt{display:flex;align-items:center;gap:10px;flex:1;min-width:200px}
-.cnt input[type=range]{flex:1;accent-color:var(--ac)}
-.cval{background:var(--sf2);border:1px solid var(--bd);border-radius:6px;padding:4px 10px;min-width:48px;text-align:center;font-weight:600;color:var(--ac2);font-size:.9rem}
-.fmts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
-.tgl{padding:8px 16px;border-radius:8px;border:1px solid var(--bd);background:var(--sf2);color:var(--tx2);cursor:pointer;font-size:.82rem;font-weight:500;transition:all .2s}
-.tgl.on{border-color:var(--ac);color:var(--ac2);background:rgba(108,92,231,.15)}
-.out{margin-top:16px;min-height:20px}
-.ulist{display:flex;flex-direction:column;gap:6px}
-.ui{display:flex;align-items:center;justify-content:space-between;background:var(--sf2);border-radius:8px;padding:10px 14px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:.88rem;word-break:break-all;gap:10px}
-.ui span{flex:1;user-select:all}
-.car{display:flex;justify-content:flex-end;margin-top:10px;gap:8px}
-.vrow{display:flex;gap:10px;flex-wrap:wrap}
-.vrow input{flex:1;min-width:200px;padding:10px 14px;border-radius:8px;border:1px solid var(--bd);background:var(--sf2);color:var(--tx);font-family:'SF Mono',Monaco,Consolas,monospace;font-size:.9rem;outline:none;transition:border-color .2s}
-.vrow input:focus{border-color:var(--ac)}
-.vres{margin-top:12px;padding:12px 16px;border-radius:8px;font-size:.88rem;display:none}
-.vres.ok{display:block;background:rgba(0,206,201,.1);border:1px solid rgba(0,206,201,.3);color:var(--gn)}
-.vres.no{display:block;background:rgba(255,107,107,.1);border:1px solid rgba(255,107,107,.3);color:var(--rd)}
-.hlist{max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:4px}
-.hlist::-webkit-scrollbar{width:6px}.hlist::-webkit-scrollbar-thumb{background:var(--bd);border-radius:3px}
-.hi{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--sf2);border-radius:6px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:.82rem;gap:8px}
-.hi .t{color:var(--tx2);font-size:.75rem;white-space:nowrap}
-.hi span{flex:1;user-select:all;word-break:break-all}
-.hact{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.empty{text-align:center;color:var(--tx2);padding:20px;font-size:.9rem}
-footer{text-align:center;padding:30px 0;color:var(--tx2);font-size:.8rem}
-@media(max-width:600px){.wrap{padding:12px}header{padding:24px 0 18px}h1{font-size:1.5rem}.card{padding:16px}.grow{flex-direction:column;align-items:stretch}}
+:root{--bg:#1a1a2e;--surface:#16213e;--surface2:#0f3460;--accent:#e94560;--accent2:#533483;--text:#eee;--text2:#aaa;--r:10px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px}
+h1{font-size:1.8rem;margin:20px 0 6px;text-align:center}
+h1 span{color:var(--accent)}
+.sub{color:var(--text2);margin-bottom:24px;text-align:center;font-size:.95rem}
+.card{background:var(--surface);border-radius:var(--r);padding:24px;width:100%;max-width:700px;margin-bottom:16px}
+.ctrls{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.cg{display:flex;flex-direction:column;gap:4px}
+.cg label{font-size:.8rem;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+.qr{display:flex;align-items:center;gap:10px}
+input[type=range]{-webkit-appearance:none;height:6px;background:var(--surface2);border-radius:3px;outline:none;flex:1;min-width:120px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--accent);border-radius:50%;cursor:pointer}
+input[type=number]{width:58px;background:var(--surface2);border:1px solid #333;color:var(--text);border-radius:6px;padding:6px 8px;text-align:center;font-size:.95rem}
+input[type=number]:focus{outline:none;border-color:var(--accent)}
+.tr{display:flex;gap:12px;flex-wrap:wrap}
+.tg{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;font-size:.9rem;background:var(--surface2);padding:6px 14px;border-radius:20px;transition:background .2s}
+.tg.on{background:var(--accent2)}
+.tg input{display:none}
+.btn{background:var(--accent);color:#fff;border:none;padding:10px 24px;border-radius:var(--r);cursor:pointer;font-size:1rem;font-weight:600;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.btn:active{transform:scale(.97)}
+.btn2{background:var(--surface2);font-size:.85rem;padding:8px 16px}
+.br{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.res{margin-top:10px}
+.ui{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--bg);border-radius:6px;margin-bottom:4px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:.9rem;cursor:pointer;transition:background .15s;word-break:break-all}
+.ui:hover{background:var(--surface2)}
+.ui .ch{font-size:.7rem;color:var(--text2);white-space:nowrap;margin-left:10px;flex-shrink:0}
+.ui.ok{background:#1a4a2e}
+.ui.ok .ch{color:#4ade80}
+.empty{color:var(--text2);text-align:center;padding:30px;font-size:.9rem}
+.hs{max-height:300px;overflow-y:auto}
+.hs::-webkit-scrollbar{width:6px}
+.hs::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:3px}
+.hi{font-family:'SF Mono',Monaco,Consolas,monospace;font-size:.8rem;color:var(--text2);padding:4px 8px;border-bottom:1px solid rgba(255,255,255,.05)}
+.ht{font-size:.7rem;color:#666;margin-right:8px}
+.badge{background:var(--accent);color:#fff;font-size:.7rem;padding:2px 8px;border-radius:10px;margin-left:8px}
+footer{margin-top:auto;padding:20px;text-align:center;color:#555;font-size:.8rem}
+@media(max-width:600px){h1{font-size:1.4rem}.card{padding:16px}.ui{font-size:.78rem;padding:7px 10px}.btn{padding:10px 18px;font-size:.9rem}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header><h1>🔑 AI UUID Generator</h1><p>Generate, validate, and format UUIDs instantly</p></header>
-
+<h1>&#128273; <span>UUID</span> Generator</h1>
+<p class="sub">Generate cryptographically random v4 UUIDs</p>
 <div class="card">
-<h2>⚡ Generate UUIDs</h2>
-<div class="grow">
-<button class="btn bp" onclick="gen()">Generate</button>
-<div class="cnt">
-<span style="color:var(--tx2);font-size:.85rem">Count:</span>
-<input type="range" id="count" min="1" max="100" value="1" oninput="document.getElementById('cv').textContent=this.value">
-<span class="cval" id="cv">1</span>
+<div class="ctrls">
+<div class="cg" style="flex:1;min-width:200px">
+<label>Quantity</label>
+<div class="qr">
+<input type="range" id="qr" min="1" max="100" value="5">
+<input type="number" id="qn" min="1" max="100" value="5">
 </div>
 </div>
-<div class="fmts">
-<button class="tgl on" id="fLower" onclick="toggleFmt(this,'lower')">lowercase</button>
-<button class="tgl" id="fUpper" onclick="toggleFmt(this,'upper')">UPPERCASE</button>
-<button class="tgl" id="fNoDash" onclick="toggleFmt(this,'nodash')">No Dashes</button>
+<div class="cg">
+<label>Format</label>
+<div class="tr">
+<label class="tg" id="ct"><input type="checkbox"><span>UPPERCASE</span></label>
+<label class="tg on" id="ht"><input type="checkbox" checked><span>Hyphens</span></label>
 </div>
-<div class="out" id="output"></div>
 </div>
-
+</div>
+<div class="br">
+<button class="btn" id="gen">Generate UUIDs</button>
+<button class="btn btn2" id="ca">Copy All</button>
+</div>
+<div class="res" id="res"><div class="empty">Click "Generate UUIDs" to start</div></div>
+</div>
 <div class="card">
-<h2>🔍 Validate UUID</h2>
-<div class="vrow">
-<input type="text" id="vinput" placeholder="Paste a UUID to validate..." oninput="validate()">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+<h3 style="font-size:1rem">&#128203; History <span class="badge" id="hc">0</span></h3>
+<button class="btn btn2" id="clr" style="padding:4px 12px;font-size:.75rem">Clear</button>
 </div>
-<div class="vres" id="vresult"></div>
+<div class="hs" id="hse"><div class="empty">No history yet</div></div>
 </div>
-
-<div class="card">
-<h2>📋 History</h2>
-<div class="hact">
-<span style="color:var(--tx2);font-size:.85rem" id="hcount">0 items</span>
-<button class="btn bs" style="padding:6px 12px;font-size:.8rem" onclick="clearHist()">Clear All</button>
-</div>
-<div class="hlist" id="hlist"><div class="empty">No UUIDs generated yet</div></div>
-</div>
-
-<footer>
-<p>AI UUID Generator &mdash; All UUIDs generated client-side using Web Crypto API</p>
-</footer>
-</div>
+<footer>UUID Generator &copy; 2025 - All UUIDs generated client-side using crypto.getRandomValues()</footer>
 <script>
-let fmt={lower:true,upper:false,nodash:false};
-let history=JSON.parse(localStorage.getItem('uuid-hist')||'[]');
-let currentUuids=[];
-
+(function(){
+var qr=document.getElementById('qr'),qn=document.getElementById('qn');
+var ct=document.getElementById('ct'),ht=document.getElementById('ht');
+var res=document.getElementById('res'),hse=document.getElementById('hse');
+var hc=document.getElementById('hc');
+var uuids=[],hist=[];
+qr.oninput=function(){qn.value=qr.value};
+qn.oninput=function(){var v=Math.min(100,Math.max(1,parseInt(qn.value)||1));qn.value=v;qr.value=v};
+ct.onclick=function(){ct.classList.toggle('on');reformat()};
+ht.onclick=function(){ht.classList.toggle('on');reformat()};
 function genUUID(){
-  if(crypto.randomUUID) return crypto.randomUUID();
-  let b=new Uint8Array(16);
-  crypto.getRandomValues(b);
-  b[6]=(b[6]&0x0f)|0x40;
-  b[8]=(b[8]&0x3f)|0x80;
-  let h=[...b].map(x=>x.toString(16).padStart(2,'0')).join('');
-  return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20);
+var b=new Uint8Array(16);crypto.getRandomValues(b);
+b[6]=(b[6]&0x0f)|0x40;b[8]=(b[8]&0x3f)|0x80;
+var h='';for(var i=0;i<16;i++)h+=(b[i]<16?'0':'')+b[i].toString(16);
+return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20);
 }
-
-function applyFmt(u){
-  let r=u;
-  if(fmt.upper) r=r.toUpperCase();
-  else r=r.toLowerCase();
-  if(fmt.nodash) r=r.replace(/-/g,'');
-  return r;
+function fmt(u){
+var s=ct.classList.contains('on')?u.toUpperCase():u;
+if(!ht.classList.contains('on'))s=s.replace(/-/g,'');
+return s;
 }
-
-function toggleFmt(el,key){
-  if(key==='lower'||key==='upper'){
-    fmt.lower=key==='lower';
-    fmt.upper=key==='upper';
-    document.getElementById('fLower').classList.toggle('on',fmt.lower);
-    document.getElementById('fUpper').classList.toggle('on',fmt.upper);
-  } else {
-    fmt[key]=!fmt[key];
-    el.classList.toggle('on',fmt[key]);
-  }
-  if(currentUuids.length) renderUuids();
+function reformat(){
+if(!uuids.length)return;
+var items=res.querySelectorAll('.ui');
+for(var i=0;i<items.length;i++){
+items[i].querySelector('.ut').textContent=fmt(uuids[i]);
 }
-
-function gen(){
-  let n=parseInt(document.getElementById('count').value);
-  currentUuids=[];
-  for(let i=0;i<n;i++) currentUuids.push(genUUID());
-  let now=new Date().toLocaleTimeString();
-  currentUuids.forEach(u=>{
-    history.unshift({uuid:u,time:now});
-  });
-  if(history.length>500) history=history.slice(0,500);
-  localStorage.setItem('uuid-hist',JSON.stringify(history));
-  renderUuids();
-  renderHist();
 }
-
-function renderUuids(){
-  let o=document.getElementById('output');
-  if(!currentUuids.length){o.innerHTML='';return;}
-  let items=currentUuids.map(u=>{
-    let f=applyFmt(u);
-    return '<div class="ui"><span>'+f+'</span><button class="bc" onclick="copyOne(this,\''+f+'\')">Copy</button></div>';
-  }).join('');
-  let copyAll=currentUuids.length>1?'<div class="car"><button class="btn bs" style="padding:6px 12px;font-size:.8rem" onclick="copyAll()">Copy All</button></div>':'';
-  o.innerHTML='<div class="ulist">'+items+'</div>'+copyAll;
+function render(){
+if(!uuids.length){res.innerHTML='<div class="empty">Click "Generate UUIDs" to start</div>';return;}
+var h='';
+for(var i=0;i<uuids.length;i++){
+h+='<div class="ui" data-i="'+i+'"><span class="ut">'+fmt(uuids[i])+'</span><span class="ch">click to copy</span></div>';
 }
-
-function copyOne(btn,text){
-  navigator.clipboard.writeText(text).then(()=>{
-    btn.textContent='Copied!';btn.classList.add('ok');
-    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('ok');},1500);
-  });
+res.innerHTML=h;
 }
-
-function copyAll(){
-  let all=currentUuids.map(u=>applyFmt(u)).join('\n');
-  navigator.clipboard.writeText(all);
+function copyText(t,el){
+navigator.clipboard.writeText(t).then(function(){
+if(el){el.classList.add('ok');el.querySelector('.ch').textContent='copied!';
+setTimeout(function(){el.classList.remove('ok');el.querySelector('.ch').textContent='click to copy'},1200);}
+});
 }
-
-function validate(){
-  let v=document.getElementById('vinput').value.trim();
-  let r=document.getElementById('vresult');
-  if(!v){r.className='vres';return;}
-  let rx=/^[0-9a-f]{8}-[0-9a-f]{4}-([1-5])[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-  let rxNoDash=/^[0-9a-f]{8}([1-5])[0-9a-f]{3}[89ab][0-9a-f]{15}$/i;
-  let m=v.match(rx);
-  if(m){
-    r.className='vres ok';
-    r.innerHTML='✅ Valid UUID v'+m[1];
-  } else {
-    let m2=v.replace(/-/g,'');
-    if(m2.length===32 && /^[0-9a-f]{32}$/i.test(m2)){
-      let ver=m2[12];
-      if('12345'.includes(ver)){
-        r.className='vres ok';
-        r.innerHTML='✅ Valid UUID v'+ver+' (no dashes)';
-        return;
-      }
-    }
-    r.className='vres no';
-    r.innerHTML='❌ Invalid UUID format';
-  }
+function addHist(arr){
+var now=new Date();var ts=now.toLocaleTimeString();
+for(var i=0;i<arr.length;i++){
+hist.unshift({t:ts,u:arr[i]});
 }
-
-function renderHist(){
-  let h=document.getElementById('hlist');
-  let c=document.getElementById('hcount');
-  c.textContent=history.length+' items';
-  if(!history.length){h.innerHTML='<div class="empty">No UUIDs generated yet</div>';return;}
-  h.innerHTML=history.slice(0,200).map(x=>
-    '<div class="hi"><span class="t">'+x.time+'</span><span>'+x.uuid+'</span><button class="bc" onclick="copyOne(this,\''+x.uuid+'\')">Copy</button></div>'
-  ).join('');
+if(hist.length>500)hist.length=500;
+hc.textContent=hist.length;
+var h='';
+for(var i=0;i<hist.length;i++){
+h+='<div class="hi"><span class="ht">'+hist[i].t+'</span>'+hist[i].u+'</div>';
 }
-
-function clearHist(){
-  history=[];localStorage.removeItem('uuid-hist');renderHist();
+hse.innerHTML=h;
 }
-
-renderHist();
+document.getElementById('gen').onclick=function(){
+var n=parseInt(qn.value)||5;
+uuids=[];
+for(var i=0;i<n;i++)uuids.push(genUUID());
+render();
+addHist(uuids);
+};
+res.onclick=function(e){
+var el=e.target.closest('.ui');
+if(!el)return;
+var i=parseInt(el.getAttribute('data-i'));
+copyText(fmt(uuids[i]),el);
+};
+document.getElementById('ca').onclick=function(){
+if(!uuids.length)return;
+var t=uuids.map(function(u){return fmt(u)}).join('\n');
+navigator.clipboard.writeText(t).then(function(){
+var b=document.getElementById('ca');b.textContent='Copied!';
+setTimeout(function(){b.textContent='Copy All'},1200);
+});
+};
+document.getElementById('clr').onclick=function(){
+hist=[];hc.textContent='0';
+hse.innerHTML='<div class="empty">No history yet</div>';
+};
+document.getElementById('gen').click();
+})();
 </script>
-<script src="https://m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+<script async src="https://alwingulla.com/88/tag.min.js" data-zone="130747" data-cfasync="false"></script>
 </body>
 </html>
